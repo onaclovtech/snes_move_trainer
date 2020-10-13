@@ -31,3 +31,11 @@ Next Todo is to add some timing constraints, so maybe from when you hit B right 
 I also plan to make it so you can just use a json file to load in and it'll train you. 
 
 Some kind of visual feedback might be useful too.
+
+i primarily built this so i could practice moves for super metroid impossible.
+
+you can see my slow progress here:
+
+https://youtu.be/z-7ytkaTlHc
+
+
