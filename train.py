@@ -69,9 +69,11 @@ class joystickEventSender(threading.Thread):
                   ["B","Right", "A"], # Duration, Min, Max
                   ["B", "Right"], # Duration, Min, Max
                   ["B", "Right", "A"], # Duration, Min, Max
+                  ["B", "A"], # Duration, Min, Max
                   ["B", "Down", "A"], # Duration, Min, Max
                   ["B", "A"], # Duration, Min, Max
                   ["B", "Down", "A"], # Duration, Min, Max
+                  ["B", "A"], # Duration, Min, Max
                   ["B", "Right", "A"]]
         for i in sequence: # Duration, Min, Max
             goal_states.append([0.0, 0.0, 0, 0, 0, 0, 0, 0, 0])
@@ -106,10 +108,20 @@ class joystickEventSender(threading.Thread):
                 #print ("Sequence", idx, "Complete")
                 idx += 1
                 if len(goal_states) <= idx:
-                    print ("It took you ", time.clock() - start_time, "seconds")
+                    print ("It took you ", time.clock() - start_time, "seconds from the start to end of the move doing it correctly.")
                     sequence_incomplete = False
                     break
                 print ("Next Sequence", sequence[idx])
+            else:
+                if idx > 0:
+                    if self.JoystickData == goal_states[idx-1]:
+                        pass
+                    else:
+                        # I think this means we pressed a different key?
+                        print ("You pressed an incorrect key sequence Restarting!")
+                        idx = 0
+                        print ("First Sequence", sequence[idx])
+                        start_time = time.clock()
             #else:
                 #print (self.JoystickData, goal_states[idx])
             if False:
@@ -126,5 +138,12 @@ class joystickEventSender(threading.Thread):
                             timer[i] = time.clock()
                         self.PriorData[i] = self.JoystickData[i]
                 
+                
+
+    
+    
+    
+	
+
 thread = joystickEventSender()
 thread.start()
