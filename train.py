@@ -138,12 +138,5 @@ class joystickEventSender(threading.Thread):
                             timer[i] = time.clock()
                         self.PriorData[i] = self.JoystickData[i]
                 
-                
-
-    
-    
-    
-	
-
 thread = joystickEventSender()
 thread.start()
