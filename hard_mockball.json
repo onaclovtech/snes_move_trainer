@@ -1,0 +1,12 @@
+{"sequence" : 
+    [["B", "Right"],
+    ["B","Right", "A"],
+    ["B", "Right"],
+    ["B", "Right", "A"],
+    ["B", "A"],
+    ["B", "Down", "A"],
+    ["B", "A"],
+    ["B", "Down", "A"],
+    ["B", "A"], 
+    ["B", "Right", "A"]]
+}
