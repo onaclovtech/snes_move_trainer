@@ -95,7 +95,9 @@ class joystickEventSender(threading.Thread):
                         goal_states[-1][index_move[j]] = 1.0
                     elif j == "Left" or j == "Select" or j == "Up":
                         goal_states[-1][index_move[j]] = -1.0
-                    elif j != "NONE":
+                    elif j == "":
+                        pass
+                    else:
                         goal_states[-1][index_move[j]] = 1
 
             start_time = time.clock()
@@ -151,6 +153,7 @@ class joystickEventSender(threading.Thread):
                             print (i, tracking[time_index][i])
                         break
                     print ("Next Sequence", sequence[idx])
+                    print ("Goal Sequence", goal_states[idx])
                 else:
                     if idx > 0:
                         if self.JoystickData == goal_states[idx-1]:
@@ -163,7 +166,7 @@ class joystickEventSender(threading.Thread):
                             print ("First Sequence", sequence[idx])
                             step_timer = time.clock()
                             sequence_timer = time.clock()
-                time.sleep(.13)
+                time.sleep(.03)
                 pygame.event.pump()
                 
 thread = joystickEventSender('bomb_jump.json')
